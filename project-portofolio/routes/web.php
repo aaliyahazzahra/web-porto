@@ -6,6 +6,8 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+
 // Route untuk Proyek
 Route::get('/projects', function () {
     // Data dummy

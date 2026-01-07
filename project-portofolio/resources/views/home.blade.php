@@ -60,61 +60,107 @@
     </div>
 </section>
 
-<section class="py-16 md:py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-4 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Tentang Saya</h2>
-        <div class="w-16 h-1 bg-blue-600 mt-4 rounded-full"></div>
+<section x-data="{ path: 'technical' }" class="py-20 md:py-32 bg-[#081b1f] text-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+        
+        {{-- Header Section --}}
+        <div class="text-center max-w-3xl mx-auto mb-16 animate-hero-1">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+                Explore My <span class="text-teal-400">Intersections.</span>
+            </h2>
+            <p class="text-gray-400 text-lg leading-relaxed">
+                Every project here sits at a unique point in my professional journey. 
+                Choose a path to see how I bridge the gap between complex systems and visual clarity.
+            </p>
+        </div>
 
+        {{-- Toggle Filter --}}
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-16 animate-hero-2">
+            <button 
+                @click="path = 'technical'"
+                :class="path === 'technical' ? 'bg-teal-600 text-white shadow-lg shadow-teal-900/40' : 'bg-white/5 text-gray-400 hover:bg-white/10'"
+                class="px-8 py-4 rounded-2xl font-bold transition-all duration-300 w-full md:w-auto border border-white/10"
+            >
+                View the Technical Path <br>
+                <span class="text-xs font-medium opacity-70">(Code & Development)</span>
+            </button>
 
-    <div class="grid grid-cols-1 mt-4 md:grid-cols-3 gap-8">
+            <button 
+                @click="path = 'creative'"
+                :class="path === 'creative' ? 'bg-teal-600 text-white shadow-lg shadow-teal-900/40' : 'bg-white/5 text-gray-400 hover:bg-white/10'"
+                class="px-8 py-4 rounded-2xl font-bold transition-all duration-300 w-full md:w-auto border border-white/10"
+            >
+                View the Creative Path <br>
+                <span class="text-xs font-medium opacity-70">(Design & Photography)</span>
+            </button>
+        </div>
 
-        {{-- Hero Image Container --}}
-            <div class="flex-1 relative order-1 lg:order-2 w-full max-w-md mx-auto">
-                <div class="relative aspect-square">
-                    <div class="absolute inset-0 bg-blue-600 rounded-[3rem] rotate-3 -z-10 opacity-20"></div>
-                    <div class="w-full h-full bg-white rounded-[3rem] border border-slate-100 shadow-2xl overflow-hidden">
-                        <img src="{{ asset('images/logo2.png') }}" alt="Logo" class="w-full h-full object-cover">
-                    </div>
-
-
-                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-50 animate-bounce" style="animation-duration: 3s;">
-                        <div class="flex items-center gap-3">
-                            <div class="p-2 bg-green-100 text-green-600 rounded-lg"><i data-lucide="check-circle" class="w-5 h-5"></i></div>
-                            <div>
-                                <p class="text-[10px] text-slate-400 font-bold uppercase">Project Done</p>
-                                <p class="text-lg font-black text-slate-800">12+</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        {{-- Grid Wrapper --}}
+        <div class="relative min-h-[600px]"> 
+            
+            {{-- Technical Projects --}}
+            <div 
+                x-show="path === 'technical'"
+                x-transition:enter="transition ease-out duration-500 delay-200"
+                x-transition:enter-start="opacity-0 translate-y-8"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-300 absolute inset-0"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+                <x-project-card title="VOLT LMS" image="{{ asset('images/volt.png') }}" :tags="['Flutter', 'Firebase']" :isFeatured="true">
+                    A Learning Management System mobile application focused on electrical engineering education.
+                </x-project-card>
+                <x-project-card title="Kawaii Sudoku" image="{{ asset('images/sudoku.png') }}" :tags="['Flutter', 'Dart']">
+                    Mobile Sudoku game with a clean, modern aesthetic.
+                </x-project-card>
+                <x-project-card title="Adsum" image="{{ asset('images/adsum.png') }}" :tags="['Flutter', 'Attendance']">
+                    Mobile attendance application developed for professional environments.
+                </x-project-card>
             </div>
 
+            {{-- Creative Projects --}}
+            <div 
+                x-show="path === 'creative'"
+                x-transition:enter="transition ease-out duration-500 delay-200"
+                x-transition:enter-start="opacity-0 translate-y-8"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-300 absolute inset-0"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+                <x-project-card title="Raiyo UI/UX" image="{{ asset('images/raiyo.png') }}" :tags="['Figma', 'UI/UX']" :isFeatured="true">
+                    Disaster preparedness web application design and branding.
+                </x-project-card>
+                <x-project-card title="The AL Intersection" image="{{ asset('images/portfolio.png') }}" :tags="['Laravel', 'Tailwind']">
+                    Personal portfolio design merging technical and creative vision.
+                </x-project-card>
+                <x-project-card title="Visual Stories" image="{{ asset('images/photo.png') }}" :tags="['Photography']">
+                    A collection of visual stories capturing human emotion.
+                </x-project-card>
+            </div>
 
-    <x-service-card
-        title="App Development"
-        icon="smartphone"
-    >
-        Membangun aplikasi Android & iOS dengan Flutter.
-    </x-service-card>
+        </div>
 
+        {{-- View More Button --}}
+        <div class="mt-20 text-center animate-hero-2">
+            <a 
+                href="/projects" 
+                class="group inline-flex items-center gap-3 px-10 py-4 bg-transparent border-2 border-teal-500/30 hover:border-teal-500 text-white font-bold rounded-2xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(20,184,166,0.3)]"
+            >
+                <span>View More Portfolios</span>
+                <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-2"></i>
+            </a>
+            <p class="mt-4 text-gray-500 text-sm italic">
+                Dive deeper into my 20+ other technical and creative experiments.
+            </p>
+        </div>
 
-    <x-service-card
-        :is-featured="true"
-        title="UI/UX Design"
-        icon="framer"
-    >
-        Menciptakan desain yang user-centric.
-    </x-service-card>
-
-    <x-service-card
-        title="Backend API"
-        icon="server"
-    >
-        Mengelola logika data dengan Laravel.
-    </x-service-card>
-    </div>
     </div>
 </section>
+
 <section class="py-16 md:py-24 bg-[#081b1f] text-white overflow-hidden">
     <div class="max-w-6xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -127,7 +173,7 @@
 
 
                     <div class="aspect-[4/5] rounded-[3rem] border border-white/10 overflow-hidden shadow-2xl relative">
-                        <img src="{{ asset('images/profile.png') }}" alt="Neyla" class="w-full h-full object-cover">
+                        <img src="{{ asset('images/profile.jpeg') }}" alt="Aaliyah" class="w-full h-full object-cover">
 
 
                         <div class="absolute inset-0 bg-gradient-to-t from-[#081b1f]/60 to-transparent"></div>
