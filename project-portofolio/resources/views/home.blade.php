@@ -9,7 +9,11 @@
         <!-- HERO LEFT -->
         <div class="space-y-8 text-center lg:text-left">
 
-          <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight text-[#F3F4F4]">
+          <h1
+            class="opacity-0
+         animate-[fadeUp_0.8s_ease-out_forwards]
+         text-4xl md:text-5xl lg:text-7xl
+         font-extrabold leading-tight tracking-tight text-[#F3F4F4]">
             Where
             <span class="block">
               <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#1D546D] to-[#5F9598]">
@@ -22,11 +26,19 @@
             </span>
           </h1>
 
-          <p class="text-lg md:text-xl text-[#F3F4F4]/70 max-w-xl mx-auto lg:mx-0">
-            Building digital experiences at the intersection of code, design, and visual storytelling.
-          </p>
+          <p
+            class="opacity-0
+         animate-[fadeUp_0.8s_ease-out_0.2s_forwards]
+         text-lg md:text-xl text-[#F3F4F4]/70
+         max-w-xl mx-auto lg:mx-0">
+            Building digital experiences at the intersection of code, design, and visual storytelling.</p>
 
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <div
+            class="opacity-0 animate-fade-up
+         [animation-delay:400ms]
+         [animation-fill-mode:forwards]
+         flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+
 
             <a href="#projects"
               class="px-8 py-4 bg-[#5F9598] text-[#061E29] font-bold rounded-2xl
@@ -44,7 +56,13 @@
         </div>
 
         <!-- HERO RIGHT -->
-        <div class="relative w-full h-[420px] lg:h-[520px] flex items-center justify-center">
+        <div
+          class="relative w-full h-[420px] lg:h-[520px]
+         flex items-center justify-center
+         opacity-0 animate-scale-in
+         [animation-delay:600ms]
+         [animation-fill-mode:forwards]">
+
 
           <!-- Shape Logic -->
           <div
